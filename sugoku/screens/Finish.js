@@ -4,8 +4,17 @@ import { StyleSheet, Text, SafeAreaView, View,TextInput,Button } from 'react-nat
 
 export default function Finish() {
     return (
-        <View>
-            <Text>Ini halaman finish</Text>
+        <View style={styles.container}>
+            <Text style={{fontSize: 25,color: "white"}}>You've just completed the game! </Text>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: 'powderblue',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+});

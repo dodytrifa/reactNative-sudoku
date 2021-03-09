@@ -1,9 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useEffect, useState} from 'react';
-import { StyleSheet, Text, SafeAreaView, View,TextInput,Button } from 'react-native';
+
+import React from 'react';
+import { StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
-// import Board from './components/Board'
+
 import Home from './screens/Home'
 import Game from './screens/Game'
 import Finish from './screens/Finish'
@@ -16,10 +16,7 @@ export default function App() {
       <Stack.Navigator>
           <Stack.Screen name="Home" component={Home}/>
           <Stack.Screen name="Game" component={Game}/>
-        {/* <SafeAreaView style={styles.container}> */}
-          {/* <Game />
-          <Finish/> */}
-          {/* </SafeAreaView> */}
+          <Stack.Screen name="Finish" component={Finish}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
