@@ -4,6 +4,7 @@ import CountDown from 'react-native-countdown-component'
 
 
 export default function Game(props) {
+  
   const encodeBoard = (board) => board.reduce((result, row, i) => result + `%5B${encodeURIComponent(row)}%5D${i ===board.length -1 ? '' : '%2C'}`, '')
   
   const encodeParams = (params) => 
@@ -14,6 +15,7 @@ export default function Game(props) {
   const [originBoard,setOriginBoard] = useState([])
   const [latestBoard,setLatestBoard] = useState([])
   const [loading, setLoading] = useState(false)
+  const [time, setTime] = useState('')
     
   useEffect(()=> {
     setLoading(true)
@@ -48,7 +50,10 @@ export default function Game(props) {
     .then(data => {
       console.log(data,'DARI THEN DATA');
       if(data.status === 'solved'){
-        props.navigation.push("Finish")
+        props.navigation.push("Finish", {
+          userName: props.route.params.userName,
+          time
+        })
       }else {
         alert(data.status)
       }
@@ -98,6 +103,8 @@ export default function Game(props) {
       )
   }
 
+  let game = 1800
+
   return ( 
     <View style={styles.container}>
       <View style={{marginBottom:30}}>
@@ -107,10 +114,11 @@ export default function Game(props) {
         digitTxtStyle={{color: 'white'}}
         timeLabelStyle={{color: 'gray'}}
         timeToShow={['M','S']}
-        until={1800}
+        until={game}
         onFinish={() => {alert('Times up, We send you to home page'), props.navigation.push("Home")}}
         onPress={() => alert('hello')}
         size={20}
+        onChange={(e)=>setTime(game - e)}
       />   
       </View>
         {
