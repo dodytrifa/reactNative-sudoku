@@ -1,11 +1,15 @@
 import React from 'react'
-import { StyleSheet, Text, SafeAreaView, View,TextInput,Button } from 'react-native'
+import { StyleSheet, Text, View,Button } from 'react-native'
 
 
-export default function Finish() {
+export default function Finish(props) {
+    function playAgain(){
+            props.navigation.push("Home")
+    }
     return (
         <View style={styles.container}>
-            <Text style={{fontSize: 25,color: "white"}}>You've just completed the game! </Text>
+            <Text style={{fontSize: 25,color: "white", marginBottom:25}}>You've just finished the game! </Text>
+            <Button title='Play Again' onPress={playAgain}></Button>
         </View>
     )
 }
